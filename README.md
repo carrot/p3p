@@ -1,6 +1,6 @@
-# P3p
+# P3P
 
-TODO: Write a gem description
+Inserts P3P headers to allow cookies to be utilized in iframe scenarios with IE.
 
 ## Installation
 
@@ -18,7 +18,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Rails
+
+Just add the gem into your Gemfile and bundle! That's it!
+
+### Rack
+
+  require 'p3p'
+  use P3P::Middleware
 
 ## Contributing
 
