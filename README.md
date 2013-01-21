@@ -24,8 +24,10 @@ Just add the gem into your Gemfile and bundle! That's it!
 
 ### Rack
 
+  ```ruby
   require 'p3p'
   use P3P::Middleware
+  ```
 
 ## Contributing
 
