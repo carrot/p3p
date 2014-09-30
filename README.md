@@ -18,6 +18,15 @@ Or install it yourself as:
 
 ## Usage
 
+### Configuration
+You can customize the P3P header text, if you so desire.
+
+```ruby
+P3P.configure do |config|
+  config.header = "Your header text here."
+end
+```
+
 ### Rails
 
 Just add the gem into your Gemfile and bundle! That's it!
@@ -39,4 +48,3 @@ Just add the gem into your Gemfile and bundle! That's it!
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/carrot/p3p/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
