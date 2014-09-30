@@ -3,7 +3,6 @@ require 'spec_helper'
 shared_examples "it returns the configured P3P header" do |http_verb|
   let(:header) { P3P::Configuration::DEFAULT_HEADER }
 
-
   it "should return P3P headers in a the case of a #{http_verb} request" do
     headers  = { 'Content-Type' => 'text/html' }
     app      = lambda { |env| [200, headers, []] }
