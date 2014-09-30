@@ -23,8 +23,10 @@ You can customize the P3P header text, if you so desire.
 
 ```ruby
 P3P.configure do |config|
-  config.header = "Your header text here."
+  config.header = 'CP="CAO PSA OUR"'
 end
+
+# Default Header: 'CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"'
 ```
 
 ### Rails
