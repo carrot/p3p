@@ -4,7 +4,7 @@ module P3P
     attr_accessor :header
 
     def initialize
-      header = DEFAULT_HEADER
+      @header = DEFAULT_HEADER
     end
   end
 end
