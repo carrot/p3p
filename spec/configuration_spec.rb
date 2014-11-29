@@ -1,33 +1,29 @@
 require 'spec_helper'
 
-shared_examples 'it returns configured P3P header' do |header, http_verb|
-  it "should return custom P3P headers in the case of a #{http_verb} request" do
-    headers  = {'Content-Type' => 'text/html'}
-    app      = lambda { |_env| [200, headers, []] }
-    request  = Rack::MockRequest.env_for('/', :lint => true, :fatal => true, :method => http_verb)
-    response = P3P::Middleware.new(app).call(request)
+describe P3P::Configuration do
+  subject { P3P::Configuration.new }
+  let(:default_header) { P3P::Configuration::DEFAULT_HEADER }
 
-    expect(response[1]).to include('P3P' => header)
-  end
-end
-
-describe P3P do
-  describe '#configure' do
-    let(:header) { 'Fake p3p header' }
-
-    before do
-      P3P.configure do |config|
-        config.header = @header
-      end
+  describe '::DEFAULT_HEADER' do
+    it 'should contain a default header' do
+      expect(default_header).to_not be_nil
     end
+  end
 
-    it_should_behave_like 'it returns configured P3P header', @header, 'GET'
-    it_should_behave_like 'it returns configured P3P header', @header, 'POST'
-    it_should_behave_like 'it returns configured P3P header', @header, 'PUT'
-    it_should_behave_like 'it returns configured P3P header', @header, 'DELETE'
-    it_should_behave_like 'it returns configured P3P header', @header, 'HEAD'
-    it_should_behave_like 'it returns configured P3P header', @header, 'OPTIONS'
-    it_should_behave_like 'it returns configured P3P header', @header, 'TRACE'
-    it_should_behave_like 'it returns configured P3P header', @header, 'CONNECT'
+  describe '.initialize' do
+    it 'should call set_default_header!' do
+      # TODO:  Check call over value
+      expect(subject.header).to eq default_header
+    end
+  end
+
+  describe '.set_default_header!' do
+    it 'should set the default header' do
+      subject.header = 'foo'
+      expect(subject.header).to eq 'foo'
+
+      subject.set_default_header!
+      expect(subject.header).to eq default_header
+    end
   end
 end

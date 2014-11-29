@@ -1,4 +1,11 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in p3p.gemspec
+gem 'rack'
+
+group :test do
+  gem 'coveralls', :require => false
+  gem 'rspec', '~> 3.1'
+  gem 'simplecov', '>= 0.9', :require => false
+end
+
 gemspec
