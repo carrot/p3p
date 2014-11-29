@@ -1,3 +1,4 @@
+script: rspec --order=random --format=documentation --color
 bundler_args: --without development
 env:
   global:
