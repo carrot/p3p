@@ -1,5 +1,6 @@
 script: rspec --order=random --format=documentation --color
 bundler_args: --without development
+cache: bundler
 env:
   global:
     - JRUBY_OPTS="$JRUBY_OPTS --debug"
@@ -7,16 +8,12 @@ gemfile:
   - Gemfile
 language: ruby
 rvm:
-  - jruby-9000
-  - 2.1.10 # EOL Soon
   - 2.2.6
   - 2.3.3
   - 2.4.0
-  - jruby-head
   - ruby-head
 matrix:
   allow_failures:
-    - rvm: jruby-head
     - rvm: ruby-head
   fast_finish: true
 sudo: false
